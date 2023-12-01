@@ -11,6 +11,12 @@ function copyToClipboard() {
         });
 }
 
+document.getElementById("box").addEventListener("click", function(event) {
+    if (event.target.tagName === "DIV") {
+        copySymbol(event.target.textContent.trim());
+    }
+});
+
 function copySymbol(symbol) {
     document.getElementById("textInput").value = symbol;
 }
