@@ -2,21 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var symbolBoxes = document.querySelectorAll("#box div");
     symbolBoxes.forEach(function (box) {
         box.addEventListener("click", function () {
-            copySymbol(box.textContent.trim());
+            copyToClipboard(box.textContent.trim());
         });
     });
 });
 
-function copySymbol(symbol) {
-    document.getElementById("textInput").value = symbol;
-}
-
-function copyToClipboard() {
-    var copyText = document.getElementById("textInput");
-
-    navigator.clipboard.writeText(copyText.value)
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
         .then(() => {
-            alert("Copied: " + copyText.value);
+            alert("Copied: " + text);
             console.log("Text copied to clipboard");
         })
         .catch(err => {
